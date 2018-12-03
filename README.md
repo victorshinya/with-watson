@@ -38,3 +38,7 @@ open With\ Watson.xcworkspace
 ### 4. Execute com o comando CMD + R (ou execute apertando o botão play)
 
 ## License
+
+MIT License
+
+Copyright (c) 2018 Victor Kazuyuki Shinya
