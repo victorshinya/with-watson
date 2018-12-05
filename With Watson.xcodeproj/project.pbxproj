@@ -179,6 +179,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-With Watson/Pods-With Watson-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IBMWatsonRestKit/RestKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IBMWatsonVisualRecognitionV3/VisualRecognition.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -186,6 +187,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RestKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VisualRecognition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

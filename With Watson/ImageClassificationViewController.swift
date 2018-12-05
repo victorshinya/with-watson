@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ImageClassificationViewController.swift
 //  With Watson
 //
 //  Created by Victor Shinya on 02/12/18.
@@ -8,8 +8,9 @@
 
 import UIKit
 import VisualRecognition
+import SVProgressHUD
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ImageClassificationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Global variables
     
@@ -50,6 +51,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func classify(image: UIImage) {
         
+        SVProgressHUD.show(withStatus: "Classificando")
+        
         visualRecognition.classify(image: image) { classifiedImages in
             
             guard let classifiedImage = classifiedImages.images.first else { return }
@@ -63,6 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
             
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 self.display(message: results, title: "Visual Recognition")
             }
         }
