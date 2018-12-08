@@ -35,7 +35,13 @@ pod install
 open With\ Watson.xcworkspace
 ```
 
-### 4. Execute com o comando CMD + R (ou execute apertando o botão play)
+### 4. Abra o arquivo Constants.swift
+
+Abra o arquivo e preencha com a credencial do Watson Visual Recognition. Não é necessário usar preencher com qualquer modelo de Visual Recognition já que neste momento iremos usar o modelo pré-treinado, conhecido como ***Default***.
+
+### 5. Execute com o comando CMD + R (ou aperte o botão play)
+
+Agora execute o projeto no simulador do Xcode ou no seu próprio iPhone/iPod/iPad. Lembre-se de que não é possível abrir a camera dentro do simulador.
 
 ## License
 
