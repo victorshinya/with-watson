@@ -3,7 +3,9 @@
 
 # Use as capacidades cognitivas do seu App iOS com Core ML e Watson | With Watson
 
-Este aplicativo iOS utiliza o serviço do Watson Visual Recognition para analisar imagens tiradas no iPhone ou fotos do album utilizando um modelo pré-treinado pela IBM. Dessa forma, é possível entender como integrar uma [API do Watson](https://cloud.ibm.com/catalog?category=ai) em um projeto em Swift com o uso da [SDK para Swift](https://github.com/watson-developer-cloud/swift-sdk).
+Este aplicativo iOS utiliza o serviço do Watson Visual Recognition para analisar imagens tiradas no iPhone ou fotos do album utilizando um modelo pré-treinado pela IBM. Dessa forma, é possível aprender como integrar uma [API do Watson](https://cloud.ibm.com/catalog?category=ai) em um projeto em Swift com o uso da [SDK para Swift](https://github.com/watson-developer-cloud/swift-sdk).
+
+Conheça também como integrar um modelo customizado de [Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/) no aplicativo iOS usando a função de **classifyWithLocalModel()**. Visite o repositório Git do [With Watson Custom Model](https://github.com/victorshinya/with-watson-custom-model) e aprenda o próximo passo do uso da integração entre o iOS com IBM Watson.
 
 ![](https://github.com/victorshinya/with-watson/blob/master/doc/source/images/architecture.jpg)
 
@@ -39,7 +41,7 @@ open With\ Watson.xcworkspace
 
 Abra o arquivo e preencha com a credencial do Watson Visual Recognition. Não é necessário usar preencher com qualquer modelo de Visual Recognition já que neste momento iremos usar o modelo pré-treinado, conhecido como ***Default***.
 
-### 5. Execute com o comando CMD + R (ou aperte o botão play)
+### 5. Execute com o comando Command + R (ou aperte o botão play)
 
 Agora execute o projeto no simulador do Xcode ou no seu próprio iPhone/iPod/iPad. Lembre-se de que não é possível abrir a camera dentro do simulador.
 
