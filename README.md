@@ -1,49 +1,53 @@
 [![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
 [![Platform](https://img.shields.io/badge/platform-swift-lightgrey.svg?style=flat)](https://developer.ibm.com/swift/)
 
-# Use as capacidades cognitivas do seu App iOS com Core ML e Watson | With Watson
+# Use the cognitive capabilities of your iOS App with Core ML and Watson | With Watson
 
-Este aplicativo iOS utiliza o serviço do Watson Visual Recognition para analisar imagens tiradas no iPhone ou fotos do album utilizando um modelo pré-treinado pela IBM. Dessa forma, é possível aprender como integrar uma [API do Watson](https://cloud.ibm.com/catalog?category=ai) em um projeto em Swift com o uso da [SDK para Swift](https://github.com/watson-developer-cloud/swift-sdk).
+This iOS application uses the Watson Visual Recognition service to analyze images taken on iPhone or album photos using a user-trained model on the Watson Studio platform (also known as the *Data Platform*). In this way, you can understand how to integrate a [Watson API](https://cloud.ibm.com/catalog?category=ai) into a Swift project with the use of the [Swift SDK](https://github.com/watson-developer-cloud/swift-sdk).
 
-Conheça também como integrar um modelo customizado de [Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/) no aplicativo iOS usando a função de **classifyWithLocalModel()**. Visite o repositório Git do [With Watson Custom Model](https://github.com/victorshinya/with-watson-custom-model) e aprenda o próximo passo do uso da integração entre o iOS com IBM Watson.
+Access [Dropbox](https://ibm.biz/dataset) to download the available Datasets, or create your own set of images.
+
+If you want to read this content in *Brazilian Portuguese*, [click here](https://github.com/victorshinya/with-watson/blob/master/README-pt.md).
 
 ![](https://github.com/victorshinya/with-watson/blob/master/doc/source/images/architecture.jpg)
 
 ## Componentes e tecnologias usadas
 
 * [Watson Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition): Analise imagens para cenas, objetos, faces e outros conteúdos
+* [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio): Plataforma de dados com ambiente colaborativo e conjunto de ferramentas para Cientista de Dados, Desenvolvedores e SMEs.
+* [Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage): Serviço de armazenamento de objetos na nuvem.
 * [Swift](https://developer.apple.com/swift/): Linguagem de programação open-source para dispositivos Apple
 
-## Como instalar e configurar localmente
+## How to install and configure locally
 
-Para instalar o aplicativo é necessário que você tenha instalado a última versão do [Xcode](https://developer.apple.com/xcode/) e [Cocoapods](https://cocoapods.org) (gerenciador de dependência para projetos de Swift e Objective-C).
+To install the application it is necessary that you have installed the latest version of [Xcode](https://developer.apple.com/xcode/) and [Cocoapods](https://cocoapods.org) (dependency manager for Swift and Objective-C projects).
 
-### 1. Baixe o aplicativo
+### 1. Get the app
 
 ```sh
-git clone https://github.com/victorshinya/with-watson
-cd with-watson
+git clone https://github.com/victorshinya/with-watson.git
+cd with-watson/
 ```
 
-### 2. Baixe todas as dependências do projeto
+### 2. Download all app dependencies
 
 ```sh
 pod install
 ```
 
-### 3. Abra o projeto "With Watson.xcworkspace"
+### 3. Open the "With Watson.xcworkspace" file
 
 ```sh
 open With\ Watson.xcworkspace
 ```
 
-### 4. Abra o arquivo Constants.swift
+### 4. Open the Constants.swift file
 
-Abra o arquivo e preencha com a credencial do Watson Visual Recognition. Não é necessário usar preencher com qualquer modelo de Visual Recognition já que neste momento iremos usar o modelo pré-treinado, conhecido como ***Default***.
+Open the file and fill it in with the Watson Visual Recognition credential and the trained Visual Recognition template - done within Watson Studio.
 
-### 5. Execute com o comando Command + R (ou aperte o botão play)
+### 5. Execute with the CMD + R command (or press the play button)
 
-Agora execute o projeto no simulador do Xcode ou no seu próprio iPhone/iPod/iPad. Lembre-se de que não é possível abrir a camera dentro do simulador.
+Now run the project on the Xcode simulator or on your own iPhone / iPod / iPad. Remember that it is not possible to open the camera inside the simulator.
 
 ## License
 
