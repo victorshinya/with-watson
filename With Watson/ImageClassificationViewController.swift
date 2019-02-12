@@ -57,17 +57,21 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        self.dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
             self.imageView.image = image
             self.classify(image: image)
             self.allowsEditing()
         }
-        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - VisualRecognition
     
-    func classify(image: UIImage, threshold: Double = 0.0) {
+    private func classify(image: UIImage, threshold: Double = 0.0) {
+        if Constants.apikey == "" && Constants.api_key == "" {
+            self.alert(message: "É necessário fornecer a credencial do Visual Recognition para executar a classificação", title: "Erro na configuração")
+            return
+        }
         
         SVProgressHUD.show(withStatus: "Classificando")
         
