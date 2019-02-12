@@ -11,7 +11,7 @@ Acesse o [Dropbox](https://ibm.biz/dataset) para ter acesso aos Datasets de imag
 
 ## Componentes e tecnologias usadas
 
-* [Watson Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition): Analise imagens para cenas, objetos, faces e outros conteúdos
+* [Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition): Analise imagens para cenas, objetos, faces e outros conteúdos
 * [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio): Plataforma de dados com ambiente colaborativo e conjunto de ferramentas para Cientista de Dados, Desenvolvedores e SMEs.
 * [Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage): Serviço de armazenamento de objetos na nuvem.
 * [Swift](https://developer.apple.com/swift/): Linguagem de programação open-source para dispositivos Apple

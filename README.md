@@ -13,7 +13,7 @@ If you want to read this content in *Brazilian Portuguese*, [click here](https:/
 
 ## Componentes e tecnologias usadas
 
-* [Watson Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition): Analyze images for scenes, objects, faces and other content.
+* [Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition): Analyze images for scenes, objects, faces and other content.
 * [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio): Data platform with collaborative environment and toolkit for Data Scientist, Developers and SMEs.
 * [Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage):  Object storage service in the cloud.
 * [Swift](https://developer.apple.com/swift/): Open-source programming language for Apple devices.
