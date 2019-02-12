@@ -23,6 +23,8 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         return VisualRecognition(version: Constants.version, apiKey: Constants.apikey)
     }()
     
+    var hasLocalModel = false
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var imageView: UIImageView!
@@ -33,6 +35,22 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         super.viewDidLoad()
         
         imagePicker.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let localModels = try? visualRecognition.listLocalModels() else { return }
+        
+        for modelId in Constants.models {
+            if !localModels.contains(modelId) {
+                visualRecognition.updateLocalModel(classifierID: modelId)
+            }
+        }
+        
+        if Constants.models.first != "" {
+            hasLocalModel = true
+        }
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -49,25 +67,20 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
     
     // MARK: - VisualRecognition
     
-    func classify(image: UIImage) {
+    func classify(image: UIImage, threshold: Double = 0.0) {
         
         SVProgressHUD.show(withStatus: "Classificando")
         
-        visualRecognition.classify(image: image) { classifiedImages in
-            
-            guard let classifiedImage = classifiedImages.images.first else { return }
-            guard let classifiedResult = classifiedImage.classifiers.first else { return }
-            
-            var results = ""
-            for result in classifiedResult.classes {
-                if let score = result.score {
-                    results.append("\(result.className): \(score)\n")
-                }
+        if hasLocalModel {
+            visualRecognition.classifyWithLocalModel(image: image, classifierIDs: Constants.models, threshold: threshold, failure: { error in
+                print("[ visualRecognition.classifyWithLocalModel ]: \(error.localizedDescription)")
+                self.alert(message: error.localizedDescription, title: "Erro encontrado")
+            }) { classifiedImages in
+                self.display(result: classifiedImages)
             }
-            
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-                self.display(message: results, title: "Visual Recognition")
+        } else {
+            visualRecognition.classify(image: image) { classifiedImages in
+                self.display(result: classifiedImages)
             }
         }
     }
@@ -85,7 +98,24 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         imagePicker.allowsEditing = true
     }
     
-    private func display(message: String, title: String = "") {
+    private func display(result: ClassifiedImages) {
+        guard let classifiedImage = result.images.first else { return }
+        guard let classifiedResult = classifiedImage.classifiers.first else { return }
+        
+        var results = ""
+        for result in classifiedResult.classes {
+            if let score = result.score {
+                results.append("\(result.className): \(score)\n")
+            }
+        }
+        
+        DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
+            self.alert(message: results, title: "Visual Recognition")
+        }
+    }
+    
+    private func alert(message: String, title: String = "") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
             alert.dismiss(animated: true, completion: nil)
