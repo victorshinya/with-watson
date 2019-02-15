@@ -11,14 +11,14 @@ If you want to read this content in *Brazilian Portuguese*, [click here](https:/
 
 ![](https://github.com/victorshinya/with-watson/blob/master/doc/source/images/architecture.jpg)
 
-## Componentes e tecnologias usadas
+## Components and technologies
 
 * [Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition): Analyze images for scenes, objects, faces and other content.
 * [Watson Studio](https://cloud.ibm.com/catalog/services/watson-studio): Data platform with collaborative environment and toolkit for Data Scientist, Developers and SMEs.
 * [Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage):  Object storage service in the cloud.
 * [Swift](https://developer.apple.com/swift/): Open-source programming language for Apple devices.
 
-## How to install and configure locally
+## How to configure and run locally
 
 To install the application it is necessary that you have installed the latest version of [Xcode](https://developer.apple.com/xcode/) and [Cocoapods](https://cocoapods.org) (dependency manager for Swift and Objective-C projects).
 
