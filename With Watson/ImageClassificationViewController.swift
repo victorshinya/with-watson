@@ -18,7 +18,7 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
     
     let visualRecognition: VisualRecognition = {
         if !Constants.api_key.isEmpty {
-            return VisualRecognition(apiKey: Constants.api_key, version: Constants.version)
+            return VisualRecognition(version: Constants.version, apiKey: Constants.api_key)
         }
         return VisualRecognition(version: Constants.version, apiKey: Constants.apikey)
     }()
@@ -44,7 +44,11 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         
         for modelId in Constants.models {
             if !localModels.contains(modelId) {
-                visualRecognition.updateLocalModel(classifierID: modelId)
+                visualRecognition.updateLocalModel(classifierID: modelId) { response, error in
+                    if let err = error, let description = err.errorDescription {
+                        print("[ visualRecognition.updateLocalModel ]: \(description)")
+                    }
+                }
             }
         }
         
@@ -82,15 +86,21 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         SVProgressHUD.show(withStatus: "Classificando")
         
         if hasLocalModel {
-            visualRecognition.classifyWithLocalModel(image: image, classifierIDs: Constants.models, threshold: threshold, failure: { error in
-                print("[ visualRecognition.classifyWithLocalModel ]: \(error.localizedDescription)")
-                self.alert(message: error.localizedDescription, title: "Erro encontrado")
-            }) { classifiedImages in
-                self.display(result: classifiedImages)
+            visualRecognition.classifyWithLocalModel(image: image, classifierIDs: Constants.models, threshold: threshold) { classifiedImages, error in
+                if let err = error, let description = err.errorDescription {
+                    print("[ visualRecognition.classifyWithLocalModel ]: \(description)")
+                } else if let classified = classifiedImages {
+                    self.display(result: classified)
+                }
+                
             }
         } else {
-            visualRecognition.classify(image: image) { classifiedImages in
-                self.display(result: classifiedImages)
+            visualRecognition.classify(image: image) { response, error  in
+                if let err = error, let description = err.errorDescription {
+                    print("[ visualRecognition.classify ]: \(description)")
+                } else if let res = response, let classifiedImages = res.result {
+                    self.display(result: classifiedImages)
+                }
             }
         }
     }
@@ -127,9 +137,7 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         
         var results = ""
         for result in classifiedResult.classes {
-            if let score = result.score {
-                results.append("\(result.className): \(score)\n")
-            }
+            results.append("\(result.className): \(result.score)\n")
         }
         
         DispatchQueue.main.async {
