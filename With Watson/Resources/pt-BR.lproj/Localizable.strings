@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  With Watson
+
+  Created by Victor Shinya on 31/05/19.
+  Copyright © 2019 Victor Shinya. All rights reserved.
+*/
+
+"error_missing_credentials" = "É necessário fornecer a credencial do Watson Visual Recognition para executar a classificação";
+"error_configuration" = "Erro na configuração";
+"classifying" = "Classificando";

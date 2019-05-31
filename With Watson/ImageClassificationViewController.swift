@@ -79,11 +79,11 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
      */
     private func classify(image: UIImage, threshold: Double = 0.0) {
         if Constants.apikey == "" && Constants.api_key == "" {
-            self.alert(message: "É necessário fornecer a credencial do Visual Recognition para executar a classificação", title: "Erro na configuração")
+            self.alert(message: NSLocalizedString("error_missing_credentials", comment: "Missing Credentials"), title: NSLocalizedString("error_configuration", comment: "Configuration error"))
             return
         }
         
-        SVProgressHUD.show(withStatus: "Classificando")
+        SVProgressHUD.show(withStatus: NSLocalizedString("classifying", comment: "Classifying"))
         
         if hasLocalModel {
             visualRecognition.classifyWithLocalModel(image: image, classifierIDs: Constants.models, threshold: threshold) { classifiedImages, error in
@@ -142,7 +142,7 @@ class ImageClassificationViewController: UIViewController, UIImagePickerControll
         
         DispatchQueue.main.async {
             SVProgressHUD.dismiss()
-            self.alert(message: results, title: "Visual Recognition")
+            self.alert(message: results, title: "Watson Visual Recognition")
         }
     }
     
